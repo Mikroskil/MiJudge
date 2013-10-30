@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>main page</title>
+<meta name="generator" content="WYSIWYG Web Builder 9 - http://www.wysiwygwebbuilder.com">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div id="page" style="margin: 0 auto; max-width:1200px; min-width:800px;">
+<div id="header" style="padding:10px;">
+<div id="wb_Image1" style="padding: 10px 0px; width: 250px; margin-bottom: -20px; display: inline-block;"><img src="images/mijudge.png" id="Image1" alt="" style="width:250px;"></div>
+<div id="login" style="text-align:right;"><a href="login.html">Login</a> | <a href="register.html">Register</a></div>
+</div>
+<div id="menu" style="background-color: #4B4B4B; color: #FFF;">
+<ul id="MenuBar" style="margin:0px; padding: 10px 15px; list-style-type: none;">
+<li><a href="./main.html">Home</a></li>
+<li>|</li>
+<li><a href="./problems.html">Problem Set</a></li>
+<li>|</li>
+<li><a href="./contests.html">Contests</a></li>
+<li>|</li>
+<li><a href="./rankings.html">Ranking</a></li>
+</ul>
+</div>
+<div id="navigation">
+</div>
+<div id="info">
+<iframe src="./news.html"></iframe>
+</div>
+<div id="content">
+<div class="problem-statement">
+<div class="header" style="text-align: center;">
+<div class="title" style="font-size: 28px;">A. Dima and Continuous Line</div>
+<div class="time-limit"><div class="property-title">time limit per test</div>2 seconds</div>
+<div class="memory-limit"><div class="property-title">memory limit per test</div>256 megabytes</div>
+<div class="input-file"><div class="property-title">input</div>standard input</div>
+<div class="output-file"><div class="property-title">output</div>standard output</div>
+</div>
+<div>
+<p>Dima and Seryozha live in an ordinary dormitory room for two. One day Dima had a date with his girl and he asked Seryozha to leave the room. As a compensation, Seryozha made Dima do his homework.</p>
+<p>The teacher gave Seryozha the coordinates of <span class="tex-span"><i>n</i></span> distinct points on the abscissa axis and asked to consecutively connect them by semi-circus in a certain order: first connect the first point with the second one, then connect the second point with the third one, then the third one with the fourth one and so on to the <span class="tex-span"><i>n</i></span>-th point. Two points with coordinates <span class="tex-span">(<i>x</i><sub class="lower-index">1</sub>, 0)</span> and <span class="tex-span">(<i>x</i><sub class="lower-index">2</sub>, 0)</span> should be connected by a semi-circle that passes above the abscissa axis with the diameter that coincides with the segment between points. Seryozha needs to find out if the line on the picture intersects itself. For clarifications, see the picture Seryozha showed to Dima (the left picture has self-intersections, the right picture doesn't have any).</p>
+<p></p>
+<center> <img class="tex-graphics" src="images/17955cea517502d4201c4c3e899ac4043379ef7b.png"> </center>
+<p></p>
+<p>Seryozha is not a small boy, so the coordinates of the points can be rather large. Help Dima cope with the problem.</p>
+</div>
+<div class="input-specification">
+<div class="section-title">Input</div>
+<p>The first line contains a single integer <span class="tex-span"><i>n</i></span> <span class="tex-span">(1 ≤ <i>n</i> ≤ 10<sup class="upper-index">3</sup>)</span>. The second line contains <span class="tex-span"><i>n</i></span> distinct integers <span class="tex-span"><i>x</i><sub class="lower-index">1</sub>, <i>x</i><sub class="lower-index">2</sub>, ..., <i>x</i><sub class="lower-index"><i>n</i></sub></span> <span class="tex-span">( - 10<sup class="upper-index">6</sup> ≤ <i>x</i><sub class="lower-index"><i>i</i></sub> ≤ 10<sup class="upper-index">6</sup>)</span> — the <span class="tex-span"><i>i</i></span>-th point has coordinates <span class="tex-span">(<i>x</i><sub class="lower-index"><i>i</i></sub>, 0)</span>. The points are not necessarily sorted by their <span class="tex-span"><i>x</i></span> coordinate.</p>
+</div>
+<div class="output-specification">
+<div class="section-title">Output</div>
+<p>In the single line print "<span class="tex-font-style-tt">yes</span>" (without the quotes), if the line has self-intersections. Otherwise, print "<span class="tex-font-style-tt">no</span>" (without the quotes).</p>
+</div>
+<div class="sample-tests">
+<div class="section-title">Sample test(s)</div>
+<div class="sample-test">
+<div class="input">
+<div class="title">Input</div>
+<pre>4<br>0 10 5 15<br></pre>
+</div>
+<div class="output">
+<div class="title">Output</div>
+<pre>yes<br></pre>
+</div>
+<div class="input">
+<div class="title">Input</div>
+<pre>4<br>0 15 5 10<br></pre>
+</div><div class="output">
+<div class="title">Output</div>
+<pre>no<br></pre></div>
+</div>
+</div>
+<div class="note">
+<div class="section-title">Note</div>
+<p>The first test from the statement is on the picture to the left, the second test is on the picture to the right.</p>
+</div>
+</div>
+</div>
+<div id="clear"></div>
+<div id="footer">Copyright © 2013 Mikroskil Programming Club.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form_name'] == 'logoutform')
+{
+   if (session_id() == "")
+   {
+      session_start();
+   }
+   unset($_SESSION['username']);
+}
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>main page</title>
+<meta name="generator" content="WYSIWYG Web Builder 9 - http://www.wysiwygwebbuilder.com">
+<style type="text/css">
+body
+{
+   margin: 0;
+   padding: 0;
+   background-color: #0024C0;
+   color: #000000;
+}
+</style>
+<style type="text/css">
+a
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+a:visited
+{
+   color: #800080;
+}
+a:active
+{
+   color: #FF0000;
+}
+a:hover
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+</style>
+<style type="text/css">
+#Image1
+{
+   border: 0px #000000 solid;
+}
+#TabMenu1
+{
+   text-align: left;
+   float: left;
+   margin: 0;
+   width: 100%;
+   font-family: Arial;
+   font-size: 13px;
+   font-weight: normal;
+   border-bottom: 1px solid #8A2BE2;
+   list-style-type: none;
+   padding: 15px 0px 4px 10px;
+   overflow: hidden;
+}
+#TabMenu1 li
+{
+   float: left;
+}
+#TabMenu1 li a.active, #TabMenu1 li a:hover.active
+{
+   background-color: #DDA0DD;
+   color: #00FEFE;
+   position: relative;
+   font-weight: normal;
+   text-decoration: none;
+   z-index: 2;
+}
+#TabMenu1 li a
+{
+   padding: 5px 14px 8px 14px;
+   border: 1px solid #8A2BE2;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   background-color: #9400D3;
+   color: #00FFFF;
+   margin-right: 3px;
+   text-decoration: none;
+   border-bottom: none;
+   position: relative;
+   top: 0;
+   -webkit-transition: 200ms all linear;
+   -moz-transition: 200ms all linear;
+   -ms-transition: 200ms all linear;
+   transition: 200ms all linear;
+}
+#TabMenu1 li a:hover
+{
+   background: #C0C0C0;
+   color: #00FEFE;
+   font-weight: normal;
+   text-decoration: none;
+   top: -4px;
+}
+#wb_Text1 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text1 div
+{
+   text-align: left;
+}
+.logoutform_button
+{
+   background-color: #4169E1;
+   border-color: #878787;
+   border-width: 1px;
+   border-style: solid;
+   color: #000000;
+   font-family: Arial;
+   font-size: 13px;
+}
+#InlineFrame1
+{
+   border: 3px #00FFFF dashed;
+   -moz-box-shadow: 3px 3px 0px #000000;
+   -webkit-box-shadow: 3px 3px 0px #000000;
+   box-shadow: 3px 3px 0px #000000;
+}
+#NavigationBar1 ul.navbar
+{
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+#NavigationBar1 ul.navbar li
+{
+   height: 25px;
+   width: 140px;
+   margin: 0px 0px 4px 0px;
+   vertical-align: bottom;
+}
+#NavigationBar1 ul.navbar li a
+{
+   display: block;
+   position: relative;
+}
+#NavigationBar1 ul.navbar li a img
+{
+   position: absolute;
+   z-index: 1;
+   border-width: 0px;
+}
+#NavigationBar1 ul.navbar li span
+{
+   display: block;
+   height: 25px;
+   width: 140px;
+   position: absolute;
+   z-index: 2;
+}
+#NavigationBar1 a .hover
+{
+   visibility: hidden;
+}
+#NavigationBar1 a:hover .hover
+{
+   visibility: visible;
+}
+#NavigationBar1 a:hover span
+{
+   visibility: hidden;
+}
+</style>
+</head>
+<body>
+<div id="wb_Image1" style="position:absolute;left:60px;top:17px;width:450px;height:168px;z-index:0;">
+<img src="images/mijudge.png" id="Image1" alt="" style="width:450px;height:168px;"></div>
+<div id="wb_TabMenu1" style="position:absolute;left:56px;top:201px;width:885px;height:772px;z-index:1;overflow:hidden;">
+<ul id="TabMenu1">
+<li><a href="./home.html" class="active">Home</a></li>
+<li><a href="./problems.html">Problems</a></li>
+<li><a href="./contests.html">Contests</a></li>
+<li><a href="./rankings.html">Rankings</a></li>
+</ul>
+</div>
+<div id="wb_Text1" style="position:absolute;left:1179px;top:93px;width:194px;height:23px;z-index:2;text-align:left;">
+<span style="color:#000000;font-family:'Comic Sans MS';font-size:16px;">Welcome, </span><span style="color:#00FFFF;font-family:'Comic Sans MS';font-size:16px;">Manusia</span><span style="color:#000000;font-family:'Comic Sans MS';font-size:16px;">!</span></div>
+<div id="wb_Logout1" style="position:absolute;left:1178px;top:130px;width:96px;height:25px;z-index:3;">
+<form name="logoutform" method="post" action="<?php echo basename(__FILE__); ?>" id="logoutform">
+<input type="hidden" name="form_name" value="logoutform">
+<input class="logoutform_button" type="submit" name="logout"value="Logout" id="logout" style="width:96px;height:25px;" />
+</form>
+</div>
+<iframe name="InlineFrame1" id="InlineFrame1" style="position:absolute;left:964px;top:233px;width:350px;height:768px;z-index:4;" src="./news.html" frameborder="0"></iframe>
+<div id="NavigationBar1" style="position:absolute;left:66px;top:265px;width:140px;height:116px;z-index:5;">
+<ul class="navbar">
+<li><a href=""><img alt="" src="images/img0001_over.gif" class="hover"><span><img alt="" src="images/img0001.gif"></span></a></li>
+<li><a href=""><img alt="" src="images/img0002_over.gif" class="hover"><span><img alt="" src="images/img0002.gif"></span></a></li>
+<li><a href=""><img alt="" src="images/img0003_over.gif" class="hover"><span><img alt="" src="images/img0003.gif"></span></a></li>
+<li><a href=""><img alt="" src="images/img0004_over.gif" class="hover"><span><img alt="" src="images/img0004.gif"></span></a></li>
+</ul>
+</div>
+</body>
+</html>
