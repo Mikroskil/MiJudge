@@ -8,17 +8,6 @@ body
 	color: #000;
 }
 
-a { text-decoration: none; }
-#MenuBar li a { color: #FFF; text-decoration: none; }
-#MenuBar li a:visited { color: #FFF; }
-#MenuBar li a:active { color: #FFF; }
-#MenuBar li a:hover { color: #FFF; }
-
-#menu ul li
-{
-	display: inline;
-	padding: 0px 5px;
-}
 #navigation
 {
 	padding: 10px;
@@ -46,7 +35,7 @@ a { text-decoration: none; }
 	width: 340px;
 	height: 768px;
 }
-#clear
+.clear
 {
 	clear: both;
 }

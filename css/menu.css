@@ -1,0 +1,31 @@
+#menu ul {
+	background-color: #4B4B4B;
+	color: #FFF;
+	font-size: 16px;
+	margin:0px;
+	padding: 5px 15px;
+	list-style-type: none;
+}
+
+#menu ul li
+{
+	display: inline;
+	padding: 5px;
+}
+
+#menu ul li a:link {
+	color: #FFF;
+	text-decoration: none;
+}
+
+#menu ul li a:visited {
+	color: #FFF;
+}
+
+#menu ul li a:hover {
+	color: #0F0;
+}
+
+#menu ul li a:active {
+	color: #FFF;
+}

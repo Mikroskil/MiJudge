@@ -2,36 +2,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MiJuge - Home</title>
-<link rel="stylesheet" type="text/css" href="css/style.css"><link rel="stylesheet" type="text/css" href="css/style.css">
+<title>MiJudge - Home</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div id="wb_Image1" style="position:absolute;left:60px;top:17px;width:450px;height:168px;z-index:0;">
-<img src="images/mijudge.png" id="Image1" alt="" style="width:450px;height:168px;"></div>
-<div id="wb_TabMenu1" style="position:absolute;left:56px;top:201px;width:885px;height:772px;z-index:1;overflow:hidden;">
-<ul id="TabMenu1">
-<li><a href="./home.html" class="active">Home</a></li>
-<li><a href="./problems.html">Problems</a></li>
+<div id="page" style="margin: 0 auto; max-width:1200px; min-width:800px;">
+<div id="header" style="padding:10px;">
+<div id="wb_Image1" style="padding: 10px 0px; width: 250px; margin-bottom: -20px; display: inline-block;"><img src="images/mijudge.png" id="Image1" alt="" style="width:250px;"></div>
+<div id="login" style="text-align:right;"><a href="login.html">Login</a> | <a href="register.html">Register</a></div>
+</div>
+<div id="menu" style="background-color: #4B4B4B; color: #FFF;">
+<ul id="MenuBar" style="margin:0px; padding: 10px 15px; list-style-type: none;">
+<li><a href="./main.html">Home</a></li>
+<li>|</li>
+<li><a href="./problems.html">Problem Set</a></li>
+<li>|</li>
 <li><a href="./contests.html">Contests</a></li>
-<li><a href="./rankings.html">Rankings</a></li>
+<li>|</li>
+<li><a href="./rankings.html#">Ranking</a></li>
 </ul>
 </div>
-<div id="wb_Text1" style="position:absolute;left:1179px;top:93px;width:194px;height:23px;z-index:2;text-align:left;">
-<span style="color:#000000;font-family:'Comic Sans MS';font-size:16px;">Welcome, </span><span style="color:#00FFFF;font-family:'Comic Sans MS';font-size:16px;">Manusia</span><span style="color:#000000;font-family:'Comic Sans MS';font-size:16px;">!</span></div>
-<div id="wb_Logout1" style="position:absolute;left:1178px;top:130px;width:96px;height:25px;z-index:3;">
-<form name="logoutform" method="post" action="<?php echo basename(__FILE__); ?>" id="logoutform">
-<input type="hidden" name="form_name" value="logoutform">
-<input class="logoutform_button" type="submit" name="logout"value="Logout" id="logout" style="width:96px;height:25px;" />
-</form>
+<div id="navigation">
+Home >> Index
 </div>
-<iframe name="InlineFrame1" id="InlineFrame1" style="position:absolute;left:964px;top:233px;width:350px;height:768px;z-index:4;" src="./news.html" frameborder="0"></iframe>
-<div id="NavigationBar1" style="position:absolute;left:66px;top:265px;width:140px;height:116px;z-index:5;">
-<ul class="navbar">
-<li><a href=""><img alt="" src="images/img0001_over.gif" class="hover"><span><img alt="" src="images/img0001.gif"></span></a></li>
-<li><a href=""><img alt="" src="images/img0002_over.gif" class="hover"><span><img alt="" src="images/img0002.gif"></span></a></li>
-<li><a href=""><img alt="" src="images/img0003_over.gif" class="hover"><span><img alt="" src="images/img0003.gif"></span></a></li>
-<li><a href=""><img alt="" src="images/img0004_over.gif" class="hover"><span><img alt="" src="images/img0004.gif"></span></a></li>
-</ul>
+<div id="info">
+<iframe src="./news.html"></iframe>
+</div>
+<div id="content">
+<pre>
+#include &lt;cstdio&gt;
+
+int main()
+{
+	printf("Hello World!");
+}</pre>
+</div>
+<div id="clear"></div>
+<div id="footer">Copyright © 2013 Mikroskil Programming Club.</div>
 </div>
 </body>
 </html>
