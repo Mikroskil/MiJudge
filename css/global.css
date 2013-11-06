@@ -8,6 +8,46 @@ body
 	color: #000;
 }
 
+@media (min-width: 1200px) {
+	.page
+	{
+		margin: 0 auto;
+		min-width:1200px;
+		max-width:1280px;
+	}
+}
+
+@media (min-width: 980px) {
+	.page
+	{
+		margin: 0 auto;
+		max-width:1200px;
+		min-width:800px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.page
+	{
+		margin: 0 auto;
+		max-width:800px;
+		min-width:600px;
+	}
+}
+
+@media (max-width: 767px) {
+}
+
+@media (max-width: 480px) {
+}
+
+.logo {
+	padding: 10px 0px;
+	width: 250px;
+	margin-bottom: -20px;
+	display: inline-block;
+}
+
 #navigation
 {
 	padding: 10px;
@@ -35,14 +75,14 @@ body
 	width: 340px;
 	height: 768px;
 }
+.sidebar
+{
+	float: right;
+	padding: 10px;
+}
 .clear
 {
 	clear: both;
-}
-#footer
-{
-	padding: 10px;
-	text-align: center;
 }
 .property-title
 {
