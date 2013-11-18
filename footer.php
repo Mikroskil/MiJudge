@@ -1,0 +1,1 @@
+<div id="footer">Copyright © 2013 Mikroskil Programming Club.</div>

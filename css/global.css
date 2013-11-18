@@ -75,6 +75,11 @@ body
 	width: 340px;
 	height: 768px;
 }
+.content
+{
+	width: 850px;
+	padding: 10px;
+}
 .sidebar
 {
 	float: right;
