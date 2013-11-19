@@ -8,7 +8,7 @@
 	<?php include_once ROOT_DIR . '\meta-http.php'; ?>
 	</head>
 	<body>
-		<div class="page">
+		<div id="page">
 			<?php include_once ROOT_DIR . '\header.php'; ?>
 			<?php include_once ROOT_DIR . '\menu.php'; ?>
 			<?php include_once ROOT_DIR . '\sidebar.php'; ?>

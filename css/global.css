@@ -9,7 +9,7 @@ body
 }
 
 @media (min-width: 1200px) {
-	.page
+	#page
 	{
 		margin: 0 auto;
 		min-width:1200px;
@@ -18,7 +18,7 @@ body
 }
 
 @media (min-width: 980px) {
-	.page
+	#page
 	{
 		margin: 0 auto;
 		max-width:1200px;
@@ -27,7 +27,7 @@ body
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-	.page
+	#page
 	{
 		margin: 0 auto;
 		max-width:800px;

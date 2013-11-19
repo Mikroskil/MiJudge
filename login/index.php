@@ -7,8 +7,8 @@
 	<title>Mikroskil Online Judge</title>
 	<?php include_once ROOT_DIR . '\meta-http.php'; ?>
 	</head>
-	<body>
-		<div class="page">
+	<body class='metro'>
+		<div id="page">
 			<?php include_once ROOT_DIR . '\header.php'; ?>
 			<?php include_once ROOT_DIR . '\menu.php'; ?>
 			<?php include_once ROOT_DIR . '\sidebar.php'; ?>
