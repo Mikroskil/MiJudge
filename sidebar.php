@@ -1,3 +1,3 @@
-<div class='span4'>
-	Here should be news / profile
-</div>
+						<div class='span4'>
+							Here should be news / profile
+						</div>
