@@ -1,14 +1,11 @@
 <?php
 	include_once('config.php');
 ?>
-<div id="menu">
-<ul>
-<li><a href="/">Home</a></li>
-<li>|</li>
-<li><a href="/problemset">Problem Set</a></li>
-<li>|</li>
-<li><a href="/contests">Contests</a></li>
-<li>|</li>
-<li><a href="/rankings">Ranking</a></li>
-</ul>
-</div>
+<nav class='navigation-bar dark'>
+    <nav class="navigation-bar-content">
+			<a href="/" class="element">Home</a>
+			<a href="/problemset" class="element">Problem Set</a>
+			<a href="/contests" class="element">Contests</a>
+			<a href="/rankings" class="element">Ranking</a>
+	</nav>
+</nav>

@@ -1,18 +1,22 @@
 <?php
 	include_once('../config.php');
-	echo "<div class='content'>form login
-	<div>
+	echo "<div class='span8'>
 	<form>
 		<fieldset>
-			<label>Username</label>
-			<div class='input-control text'><input type='text'></div>
-			<label>Password</label>
-			<div><input type='text'></div>
-			<div><input type='submit' value='Login'></div>
+			<legend>Login</legend>
+			<lable>Username</lable>
+			<div class='input-control text' data-role='input-control'>
+				<input type='text' placeholder='input text'/>
+				<button class='btn-clear'></button>
+			</div>
+			<lable>Password</lable>
+			<div class='input-control password' data-role='input-control'>
+				<input type='password' value='' placeholder='input password'/>
+				<button class='btn-reveal'></button>
+			</div>
+			<input type='submit' value='Login'>
 		</fieldset>
-	</form>
-	</div>
-	</div>";
+	</form>";
 	echo "<div class='content'>Test connect</div>";
 	$connect = mysql_connect(DB_Server, DB_Login, DB_Password);
 	mysql_select_db(DB_Name);
@@ -21,6 +25,7 @@
 		echo "Connected";
 	else
 		echo "Fail";
+	echo "</div>";
 	echo "</div>";
 	mysql_close($connect);
 	/*

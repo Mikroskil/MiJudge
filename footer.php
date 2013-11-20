@@ -1,1 +1,5 @@
-<div id="footer">Copyright © 2013 Mikroskil Programming Club.</div>
+<footer class="bg-white">
+	<div class="tertiary-text">
+		Copyright © 2013 Mikroskil Programming Club.
+	</div>
+</footer>

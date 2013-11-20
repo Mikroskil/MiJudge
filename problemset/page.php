@@ -1,3 +1,7 @@
 <?php
-	echo "<div class='content'>Problems</div>";
+	echo "
+<div class='span8'>
+	Problems
+</div>
+";
 ?>

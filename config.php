@@ -1,6 +1,15 @@
 <?php
 	define( 'ROOT_DIR', dirname(__FILE__) );
-	define( 'CSS_DIR','/css' );
+	if ($_SERVER['HTTP_HOST']=='localhost')
+	{
+		define( 'CSS_DIR', $_SERVER['REQUEST_URI'] . '/css' );
+		define( 'IMG_DIR', $_SERVER['REQUEST_URI'] . '/images' );
+	}
+	else
+	{
+		define( 'CSS_DIR', '/css' );
+		define( 'IMG_DIR', '/images' );
+	}
 	define( 'DB_Server', 'localhost' );
 	define( 'DB_Login', 'mijudge' );
 	define( 'DB_Password', 'MikroskilOnlineJudge' );

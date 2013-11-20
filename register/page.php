@@ -1,3 +1,7 @@
 <?php
-	echo "<div class='content'>form register</div>";
+	echo "
+<div class='span8'>
+	form register
+</div>
+";
 ?>

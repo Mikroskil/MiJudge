@@ -1,4 +1,9 @@
-<div id="header" style="padding:10px;">
-<div class="logo"><img src="/images/mijudge.png" id="Image1" alt="" style="width:250px;"></div>
-<div id="login" style="text-align:right;"><a href="/login">Login</a> | <a href="/register">Register</a></div>
+<?php
+	include_once('config.php');
+?>
+<div class='grid'>
+	<div class='row'>
+		<div class='span4'><img src="<?php echo IMG_DIR; ?>/mijudge.png" style="max-width:250px;"></div>
+		<div class='span2 offset6'><a href="/login">Login</a> <a href="/register">Register</a></div>
+	</div>
 </div>
