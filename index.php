@@ -9,9 +9,10 @@
 	<?php include_once ROOT_DIR . '\meta-http.php'; ?>
 	</head>
 	<body class='metro'>
-		<div class='page'>
-			<?php include_once ROOT_DIR . '\header.php'; ?>
+		<header class='bg-dark'>
 			<?php include_once ROOT_DIR . '\menu.php'; ?>
+		</header>
+		<div class='page'>
 			<div class='page-region'>
 				<div class='grid'>
 					<div class='row'>

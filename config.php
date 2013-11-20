@@ -2,11 +2,13 @@
 	define( 'ROOT_DIR', dirname(__FILE__) );
 	if ($_SERVER['HTTP_HOST']=='localhost')
 	{
+		define( 'JS_DIR', $_SERVER['REQUEST_URI'] . '/js' );
 		define( 'CSS_DIR', $_SERVER['REQUEST_URI'] . '/css' );
 		define( 'IMG_DIR', $_SERVER['REQUEST_URI'] . '/images' );
 	}
 	else
 	{
+		define( 'JS_DIR', '/js' );
 		define( 'CSS_DIR', '/css' );
 		define( 'IMG_DIR', '/images' );
 	}
