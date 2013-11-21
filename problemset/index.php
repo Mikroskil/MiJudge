@@ -8,32 +8,20 @@
 	<title>Mikroskil Online Judge</title>
 <?php include_once ROOT_DIR . '\meta-http.php'; ?>
 	</head>
-	<body class='metro'>
-		<header class='bg-dark'>
+	<body class="metro">
+		<header class="bg-dark">
 <?php include_once ROOT_DIR . '\menu.php'; ?>
 		</header>
-		<div class='page'>
-			<div class='page-region'>
-				<div class='grid'>
-					<div class='row'>
-<?php
-if (isset($_GET['page'])) {
-	if (file_exists('problem/' . $_GET['page'] . '.html'))
-		include_once 'problem/' . $_GET['page'] . '.html';
-	else
-		echo "
-	<div class='span8'>
-		<span>Not Found</span>
-	</div>
-	";
-} else
-	include_once 'page.php';
-?>
+		<div class="page">
+			<div class="page-region">
+				<div class="grid">
+					<div class="row">
+<?php include_once 'page.php'; ?>
 <?php include_once ROOT_DIR . '\sidebar.php'; ?>
 					</div>
 				</div>
 			</div>
-<?php include_once ROOT_DIR . '\footer.php'; ?>
 		</div>
+<?php include_once ROOT_DIR . '\footer.php'; ?>
 	</body>
 </html>
