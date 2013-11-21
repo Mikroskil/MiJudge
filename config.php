@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	define( 'ROOT_DIR', dirname(__FILE__) );
 	if ($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']=='192.168.11.16')
 	{
