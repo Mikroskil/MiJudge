@@ -1,9 +1,12 @@
 <?php
-	$connect = newConnection();
-	$res = $connect->prepare("select * from contest order by endtime desc");
-	$res->execute();
-	echo "
-	<div class='span8'>
+	if (isset($_GET['contest'])) {
+		include_once('contest.php');
+	} else {
+		$connect = newConnection();
+		$res = $connect->prepare("select * from contest order by endtime desc");
+		$res->execute();
+		echo "
+	<div class=\"span8\">
 		<h3>All Contests</h3>
 		<table class=\"table hovered\">
 			<thead>
@@ -19,7 +22,7 @@
 				foreach ($res as $row) {
 					echo "
 				<tr>
-					<td>$row[contestname]</td>
+					<td><a href=\"?contest=$row[cid]\">$row[contestname]</a></td>
 					<td class=\"text-center\">$row[starttime]</td>
 					<td class=\"text-center\">$row[endtime]</td>
 				</tr>";
@@ -31,4 +34,5 @@
 		</table>
 	</div>
 ";
+	}
 ?>

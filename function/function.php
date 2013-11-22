@@ -12,4 +12,66 @@ function newConnection()
 	}
 }
 
+function addMetahttp()
+{
+	include_once ROOT_DIR . '\meta-http.php';
+}
+
+function addHeader()
+{
+	include_once ROOT_DIR . '\header.php';
+}
+
+function addSidebar()
+{
+	include_once ROOT_DIR . '\sidebar.php';
+}
+
+function addFooter()
+{
+	include_once ROOT_DIR . '\footer.php';
+}
+
+function openPageRegion()
+{
+	echo "		<div class=\"page\">
+			<div class=\"page-region\">
+";
+	openGrid();
+}
+
+function closePageRegion()
+{
+	echo "
+			</div>
+		</div>
+";
+	closeGrid();
+}
+
+function openGrid()
+{
+	echo "
+					<div class=\"grid\">";
+	openRow();
+}
+
+function closeGrid()
+{
+	closeRow();
+	echo "				</div>";
+}
+
+function openRow()
+{
+	echo "
+				<div class=\"row\">";
+}
+
+function closeRow()
+{
+	echo "					</div>
+";
+}
+
 ?>

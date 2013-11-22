@@ -21,7 +21,7 @@
 				foreach ($res as $row) {
 					echo "
 				<tr>
-					<td class=\"text-center\"><a href=?problem=$row[probid]>$row[probid]</a></td>
+					<td class=\"text-center\"><a href=\"?problem=$row[probid]\">$row[probid]</a></td>
 					<td>$row[name]</td>
 				</tr>";
 				}
