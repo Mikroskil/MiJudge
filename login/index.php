@@ -1,6 +1,7 @@
 <?php
 	include_once('../config.php');
-	include_once('login.php');
+	if (isset($_POST['username']) && isset($_POST['password']))
+		include_once('login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
