@@ -1,9 +1,6 @@
 <?php
 	echo "
 <div class='span8'>
-	<!--form register-->
-</div>
-<div class='span8'>
 	<form method='post'>
 		<fieldset>
 			<legend>Register</legend>
