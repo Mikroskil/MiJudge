@@ -2,6 +2,7 @@
 	session_start();
 	define( 'ROOT_DIR', dirname(__FILE__) );
 	include_once(ROOT_DIR . '/function/function.php');
+	define( "UPLOAD_DIR", "\\\\192.168.159.128\\submissions\\");
 	if ($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']=='192.168.11.16')
 	{
 		define( 'JS_DIR', '/MiJudge/js' );

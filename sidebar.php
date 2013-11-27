@@ -3,15 +3,22 @@
 	<div class=\"span4\">";
 	echo "
 	Here should be news / profile";
-	if (isset($_GET['problem'])) {
+	if (isset($_SESSION['username']) && isset($_GET['problem'])) {
+		$_SESSION['probid'] = $_GET['problem'];
 		echo "
 		<div class=\"row\">
 			<form action=\"" . FLD . "upload-submission.php\" method=\"post\" enctype=\"multipart/form-data\">
 			<fieldset>
-				<legend>Login</legend>
+				<legend>Submit Solution</legend>
 				<div class=\"input-control file\">
 					<input type=\"file\" name=\"submission\"/>
 					<button class=\"btn-file\"></button>
+				</div>
+				<div class=\"input-control select\">
+					<select name=\"language\">
+						<option>C++</option>
+						<option>Java</option>
+					</select>
 				</div>
 				<input type=\"submit\" value=\"Submit\">
 			</fieldset>
@@ -21,4 +28,23 @@
 	echo "
 	</div>
 ";
+/*
+				<div>
+					<div class=\"input-control radio default-style\">
+						<label>
+							<input type=\"radio\" name=\"language\" checked />
+							<span class=\"check\"></span>
+							C++
+						</label>
+					</div>
+				</div>
+				<div>
+					<div class=\"input-control radio default-style\">
+						<label>
+							<input type=\"radio\" name=\"language\" />
+							<span class=\"check\"></span>
+							Java
+						</label>
+					</div>
+				</div>*/
 ?>

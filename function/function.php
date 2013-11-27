@@ -8,8 +8,23 @@ function newConnection()
 		$connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		return $connect;
 	} catch (PDOException $e) {
-		die($e->getMessage());
+		throwError("Server Not Found");
 	}
+}
+
+function throwError($err)
+{
+	$_SESSION['error'] = $err;
+	header("Location: /error.php");
+}
+
+function dbconfig_get($conf)
+{
+	$con = newConnection();
+	$res = $connect->prepare("select * from configuration where name='" . $conf . "'");
+	$res->execute();
+	$row = $res->fetch();
+	return $row['value'];
 }
 
 function addMetahttp()
