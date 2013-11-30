@@ -36,12 +36,18 @@
 			$row = $res->fetch();
 			$langid = $row['langid'];
 			$origsubmitid = NULL;
-			$res = $connect->prepare("RETURNID INSERT INTO submission
+			/*$sql = "INSERT INTO submission
 				  (cid, teamid, probid, langid, submittime, origsubmitid)
-				  VALUES ($cid, $team, $probid, $langid, now(), $origsubmitid)");
+				  VALUES ($cid, $team, $probid, $langid, now(), $origsubmitid)";
+			$res = $connect->prepare($sql);
+			$res->execute();*/
+			$res = $connect->prepare("select * from submission order by submitid desc");
 			$res->execute();
-			$saveFileName = $cid . "." .$id . "." . $team . "." . $probid . ".0." . $fileName;
+			$row = $res->fetch();
+			$id= $row['submitid'];
+			$saveFileName = "c" . $cid . ".s" .$id . "." . $team . "." . $probid . ".0." . $fileName;
 			move_uploaded_file($_FILES["submission"]["tmp_name"], UPLOAD_DIR . $saveFileName);
+			header("Location:" . FLD);
 		}
 	} else {
 		header("Location:" . FLD);
