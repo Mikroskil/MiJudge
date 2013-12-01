@@ -8,8 +8,7 @@
 	<div class=\"span8\">";
 	echo "
 		<h3><a href=\"?contest=$_GET[contest]\">Contest $row[contestname]</a></h3>";
-		$res = $connect->prepare("select * from contest a inner join problem b on a.cid=b.cid where a.cid=:id");
-		$res->execute(array('id' => $_GET['contest']));
+		$res = newQuery($connect, "select * from contest a inner join problem b on a.cid=b.cid where a.cid=:id", array('id' => $_GET['contest']));
 		echo "
 		<table class=\"table hovered\">
 			<thead>

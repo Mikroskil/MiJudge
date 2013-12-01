@@ -12,6 +12,16 @@ function newConnection()
 	}
 }
 
+function newQuery($connection, $query, $array = NULL)
+{
+	$result = $connection->prepare($query);
+	if ($array != NULL)
+		$result->execute($array);
+	else
+		$result->execute();
+	return $result;
+}
+
 function throwError($err)
 {
 	$_SESSION['error'] = $err;
@@ -34,6 +44,8 @@ function addMetahttp()
 
 function addHeader()
 {
+	echo "<body class=\"metro\">
+";
 	include_once ROOT_DIR . '\header.php';
 }
 
@@ -45,36 +57,57 @@ function addSidebar()
 function addFooter()
 {
 	include_once ROOT_DIR . '\footer.php';
+	echo "
+	</body>";
+}
+
+function openHTML($title)
+{
+	echo "<!DOCTYPE html>
+<html lang=\"en\">
+<html>
+	<head>
+	<title>" . $title . "</title>";
+	addMetahttp();
+	echo "
+	</head>
+";
+}
+
+function closeHTML()
+{
+	echo "
+</html>";
 }
 
 function openPageRegion()
 {
-	echo "		<div class=\"page\">
-			<div class=\"page-region\">
-";
+	echo "
+	<div class=\"page\">
+		<div class=\"page-region\">";
 	openGrid();
 }
 
 function closePageRegion()
 {
-	echo "
-			</div>
-		</div>
-";
 	closeGrid();
+	echo "
+		</div>
+	</div>";
 }
 
 function openGrid()
 {
 	echo "
-					<div class=\"grid\">";
+			<div class=\"grid\">";
 	openRow();
 }
 
 function closeGrid()
 {
 	closeRow();
-	echo "				</div>";
+	echo "
+			</div>";
 }
 
 function openRow()
@@ -85,8 +118,8 @@ function openRow()
 
 function closeRow()
 {
-	echo "					</div>
-";
+	echo "
+				</div>";
 }
 
 ?>

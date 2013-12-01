@@ -36,4 +36,4 @@
 	<script src="<?php echo JS_DIR; ?>/metro/metro-hint.js"></script>
 	<!-- Local JavaScript -->
 	<script src="<?php echo JS_DIR; ?>/docs.js"></script>
-	<?php //echo '<script src="' . JS_DIR . '/github.info.js"></script>'; ?>
+<?php //echo '<script src="' . JS_DIR . '/github.info.js"></script>'; ?>

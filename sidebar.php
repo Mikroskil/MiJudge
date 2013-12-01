@@ -26,8 +26,7 @@
 		</div>";
 	}
 	echo "
-	</div>
-";
+	</div>";
 /*
 				<div>
 					<div class=\"input-control radio default-style\">

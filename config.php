@@ -29,8 +29,14 @@
 	define( 'DB_Password', 'ong' );
 	define( 'DB_Name', 'domjudge' );
 	//*/
-	//*
+	/*
 	define( 'DB_Server', '192.168.159.128' );
+	define( 'DB_Login', 'domjudge' );
+	define( 'DB_Password', 'qMksax88TlqJiMuF' );
+	define( 'DB_Name', 'domjudge' );
+	//*/
+	//*
+	define( 'DB_Server', '192.168.174.128' );
 	define( 'DB_Login', 'domjudge' );
 	define( 'DB_Password', 'qMksax88TlqJiMuF' );
 	define( 'DB_Name', 'domjudge' );
