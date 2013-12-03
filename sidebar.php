@@ -6,13 +6,22 @@
 	if (isset($_SESSION['username']) && isset($_GET['problem'])) {
 		$_SESSION['probid'] = $_GET['problem'];
 		echo "
-		<div class=\"row\">
+		<div class=\"row\">";
+		if (isset($_SESSION['result'])) {
+			echo "
+			<h2 class=\"fg-green\">$_SESSION[result]</h2>";
+			unset($_SESSION['result']);
+		}
+		echo "
 			<form action=\"" . FLD . "upload-submission.php\" method=\"post\" enctype=\"multipart/form-data\">
 			<fieldset>
 				<legend>Submit Solution</legend>
 				<div class=\"input-control file\">
 					<input type=\"file\" name=\"submission\"/>
 					<button class=\"btn-file\"></button>
+				</div>
+				<div class=\"input-control hidden\">
+					<input type=\"hidden\" name=\"probid\" value=\"$_GET[problem]\"/>
 				</div>
 				<div class=\"input-control select\">
 					<select name=\"language\">

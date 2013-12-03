@@ -18,6 +18,18 @@
 				<a href=\"" . FLD . "login\" class=\"element place-right\">Login</a>";
 	echo "
 			</div>
-		</div>
+		</div>";
+		/*
+		echo"
+		<div class=\"navigation-bar dark\">
+			<div class=\"navigation-bar-content container\">
+				<div>$_SERVER[SERVER_NAME]</div>
+				<div>$_SERVER[REQUEST_URI]</div>
+				<div>" . __DIR__ . "</div>
+				<div>" . dirname(__FILE__) . "</div>
+			</div>
+		</div>";
+		*/
+		echo "
 	</header>";
 ?>

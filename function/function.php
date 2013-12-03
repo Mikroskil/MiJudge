@@ -63,6 +63,7 @@ function addFooter()
 
 function openHTML($title)
 {
+	$_SESSION['lastpage'] = $_SERVER['REQUEST_URI'];
 	echo "<!DOCTYPE html>
 <html lang=\"en\">
 <html>
@@ -120,6 +121,17 @@ function closeRow()
 {
 	echo "
 				</div>";
+}
+
+function getFileContents($filename)
+{
+	if (!file_exists($filename) ) {
+		return '';
+	}
+	if (!is_readable($filename) ) {
+		error("Could not open $filename for reading: not readable");
+	}
+	return file_get_contents($filename);
 }
 
 ?>

@@ -1,7 +1,6 @@
 <?php
 	include_once('../config.php');
-	include_once('login.php');
-	openHTML("Mikroskil Online Judge | Login");
+	openHTML("Mikroskil Online Judge | Contest 3");
 	addHeader();
 	openPageRegion();
 	include_once 'page.php';

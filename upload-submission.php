@@ -3,51 +3,58 @@
 	if (isset($_FILES["submission"])) {
 		if ($_FILES["submission"]["error"] > 0)
 		{
-			echo "Error: " . $_FILES["submission"]["error"] . "<br>";
+			throwError("Error: " . $_FILES["submission"]["error"]);
 		}
 		else
 		{
+			/*
 			echo "Upload: " . $_FILES["submission"]["name"] . "<br>";
 			echo "Type: " . $_FILES["submission"]["type"] . "<br>";
 			echo "Size: " . $_FILES["submission"]["size"] . " B<br>";
 			echo "Stored in: " . $_FILES["submission"]["tmp_name"] . "<br>";
-			echo $_POST['language'];
-			$probid = $_SESSION['probid'];
+			//echo $_POST['language'];
+			*/
+			$probid = $_POST['probid'];
 			$fileName = $_FILES["submission"]["name"];
-			$saveFileName = "";
+			$tempName = $_FILES["submission"]["tmp_name"];
 			$connect = newConnection();
-			$res = $connect->prepare("SELECT * FROM `contest` where starttime <= now() and endtime >= now()");
-			$res->execute();
-			if ($res->rowCount() == 0) {
+			
+			$res = newQuery($connect, "SELECT * FROM `contest` where starttime <= now() and endtime >= now()");
+			if ($res->rowCount() == 0)
 				throwError("No Contest");
-			}
 			$row = $res->fetch();
 			$cid = $row['cid'];
-			$res = $connect->prepare("SELECT * FROM `team` where name = '" . $_SESSION['username'] ."'");
-			$res->execute();
+			
+			$res = newQuery($connect, "SELECT * FROM `team` where name=:username", array('username' => $_SESSION['username']));
 			if ($res->rowCount() == 0)
 				throwError("No Valid Team");
 			$row = $res->fetch();
 			$team = $row['login'];
-			$res = $connect->prepare("SELECT * FROM `language` where name = '" . $_POST['language'] . "'");
-			$res->execute();
+			
+			$res = newQuery($connect, "SELECT * FROM `language` where name = '" . $_POST['language'] . "'");
 			if ($res->rowCount() == 0)
 				throwError("No Valid Team");
 			$row = $res->fetch();
 			$langid = $row['langid'];
-			$origsubmitid = NULL;
-			/*$sql = "INSERT INTO submission
-				  (cid, teamid, probid, langid, submittime, origsubmitid)
-				  VALUES ($cid, $team, $probid, $langid, now(), $origsubmitid)";
-			$res = $connect->prepare($sql);
-			$res->execute();*/
-			$res = $connect->prepare("select * from submission order by submitid desc");
-			$res->execute();
-			$row = $res->fetch();
-			$id= $row['submitid'];
-			$saveFileName = "c" . $cid . ".s" .$id . "." . $team . "." . $probid . ".0." . $fileName;
+			
+			try {
+				$connect->beginTransaction();
+				$res = newQuery($connect, "INSERT INTO submission
+						(cid, teamid, probid, langid, submittime, origsubmitid)
+						VALUES (:cid, :team, :probid, :langid, now(), null)", array('cid' => $cid, 'team' => $team, 'probid' => $probid, 'langid' => $langid));
+				$id = $connect->lastInsertId();
+				$res = newQuery($connect, "INSERT INTO submission_file
+						(submitid, filename, rank, sourcecode) VALUES (:id, :filename, :rank, :source)",
+						array('id' => $id, 'filename' => $fileName, 'rank' => 0, 'source' => getFileContents($tempName)));
+				$connect->commit();
+			} catch (PDOExecption $e) {
+				$connect->rollback();
+				throwError($e->getMessage());
+			}
+			$saveFileName = "c" . $cid . ".s" .$id . "." . $team . "." . $probid . "." . $langid . ".0." . $fileName;
 			move_uploaded_file($_FILES["submission"]["tmp_name"], UPLOAD_DIR . $saveFileName);
-			header("Location:" . FLD);
+			$_SESSION['result'] = "Submission Accepted Succesfully";
+			header("Location:" . $_SESSION['lastpage']);
 		}
 	} else {
 		header("Location:" . FLD);

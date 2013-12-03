@@ -22,7 +22,7 @@
 				foreach ($res as $row) {
 					echo "
 				<tr>
-					<td><a href=\"" . FLD . "contest/$row[cid]\">$row[contestname]</td>
+					<td><a href=\"" . FLD . "contest/?contest=$row[cid]\">$row[contestname]</td>
 					<td class=\"text-center\">$row[starttime]</td>
 					<td class=\"text-center\">$row[endtime]</td>
 				</tr>";
@@ -50,7 +50,7 @@
 				foreach ($res as $row) {
 					echo "
 				<tr>
-					<td><a href=\"" . FLD . "contest/$row[cid]\">$row[contestname]</td>
+					<td><a href=\"" . FLD . "contest/?contest=$row[cid]\">$row[contestname]</td>
 					<td class=\"text-center\">$row[starttime]</td>
 					<td class=\"text-center\">$row[endtime]</td>
 				</tr>";
