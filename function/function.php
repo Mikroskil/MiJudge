@@ -39,31 +39,32 @@ function dbconfig_get($conf)
 
 function addMetahttp()
 {
-	include_once ROOT_DIR . '\meta-http.php';
+	include_once ROOT_DIR . '/meta-http.php';
 }
 
 function addHeader()
 {
 	echo "<body class=\"metro\">
 ";
-	include_once ROOT_DIR . '\header.php';
+	include_once ROOT_DIR . '/header.php';
 }
 
 function addSidebar()
 {
-	include_once ROOT_DIR . '\sidebar.php';
+	include_once ROOT_DIR . '/sidebar.php';
 }
 
 function addFooter()
 {
-	include_once ROOT_DIR . '\footer.php';
+	include_once ROOT_DIR . '/footer.php';
 	echo "
 	</body>";
 }
 
 function openHTML($title)
 {
-	$_SESSION['lastpage'] = $_SERVER['REQUEST_URI'];
+	if ($_SERVER['REQUEST_URI'] != "/login/" && $_SERVER['REQUEST_URI'] != "/login/index.php")
+		$_SESSION['lastpage'] = $_SERVER['REQUEST_URI'];
 	echo "<!DOCTYPE html>
 <html lang=\"en\">
 <html>
@@ -83,6 +84,7 @@ function closeHTML()
 
 function openPageRegion()
 {
+	//echo $_SERVER['REQUEST_URI'];
 	echo "
 	<div class=\"page\">
 		<div class=\"page-region\">";
@@ -123,6 +125,11 @@ function closeRow()
 				</div>";
 }
 
+function isLogin()
+{
+	return isset($_SESSION['username']);
+}
+
 function getFileContents($filename)
 {
 	if (!file_exists($filename) ) {
@@ -132,6 +139,12 @@ function getFileContents($filename)
 		error("Could not open $filename for reading: not readable");
 	}
 	return file_get_contents($filename);
+}
+
+function getPenaltyTime($isSolved, $totalSubmission)
+{
+	if (!$isSolved) return 0;
+	return ($totalSubmission - 1) * 20;
 }
 
 ?>

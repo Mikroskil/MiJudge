@@ -8,20 +8,19 @@
 			echo "
 	<div class=\"span8\">
 $row[problemtext]
-	</div>
-";
+	</div>";
+		} else if ($row['problemtext_type'] == "pdf") {
+			header("Location: " . FLD . "showPDF.php?problem=$_GET[problem]");
 		} else {
 			echo "
 	<div class=\"span8\">
 Problem ID $_GET[problem] Could Not Displayed.
-	</div>
-";
+	</div>";
 		}
 	} else {
 		echo "
 	<div class=\"span8\">
 Problem ID $_GET[problem] Not Found.
-	</div>
-";
+	</div>";
 	}
 ?>
