@@ -146,5 +146,4 @@ function getPenaltyTime($isSolved, $totalSubmission)
 	if (!$isSolved) return 0;
 	return ($totalSubmission - 1) * 20;
 }
-
 ?>
