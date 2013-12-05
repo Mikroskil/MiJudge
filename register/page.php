@@ -13,10 +13,6 @@
 				<button class='btn-clear'></button>
 			</div>
 			<div class='input-control text' data-role='input-control'>
-				<input type='text' placeholder='Country' name='country'/>
-				<button class='btn-clear'></button>
-			</div>
-			<div class='input-control text' data-role='input-control'>
 				<input type='text' placeholder='Username' name='username'/>
 				<button class='btn-clear'></button>
 			</div>
