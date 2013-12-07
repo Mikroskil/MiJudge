@@ -1,5 +1,4 @@
 <?php
-	$error = "";
 	$user = "";
 	if (isset($_POST['username']))
 		$user = $_POST['username'];

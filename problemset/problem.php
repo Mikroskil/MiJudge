@@ -1,15 +1,14 @@
 <?php
 	$connect = newConnection();
-	$res = $connect->prepare("select * from problem where probid=:id");
-	$res->execute(array('id' => $_GET['problem']));
-	if ($res->rowCount() == 1) {
-		$row = $res->fetch();
-		if ($row['problemtext_type'] == "html") {
+	$res = newQuery($connect, "select * from problem where probid=:id", (array('id' => $_GET['problem'])));
+	$problem = $res->fetch();
+	if ($problem != null) {
+		if ($problem['problemtext_type'] == "html") {
 			echo "
 	<div class=\"span8\">
-$row[problemtext]
+$problem[problemtext]
 	</div>";
-		} else if ($row['problemtext_type'] == "pdf") {
+		} else if ($problem['problemtext_type'] == "pdf") {
 			header("Location: " . FLD . "showPDF.php?problem=$_GET[problem]");
 		} else {
 			echo "

@@ -6,6 +6,7 @@
 		echo "
 	<div class=\"span8\">";
 		$res = newQuery($connect, "select * from contest where endtime > now() order by endtime desc");
+		$contests = $res->fetchAll();
 		echo "
 		<h3>Current Contests</h3>
 		<table class=\"table hovered\">
@@ -16,10 +17,10 @@
 					<th class=\"text-left\">End</th>
 				</tr>
 			</thead>";
-			if ($res->rowCount() > 0) {
+			if (count($contests) > 0) {
 				echo "
 			<tbody>";
-				foreach ($res as $row) {
+				foreach ($contests as $row) {
 					echo "
 				<tr>
 					<td><a href=\"" . FLD . "contest/?contest=$row[cid]\">$row[contestname]</td>
@@ -34,6 +35,7 @@
 		</table>";
 		openRow();
 		$res = newQuery($connect, "select * from contest where endtime < now() order by endtime desc");
+		$contests = $res->fetchAll();
 		echo "
 		<h3>Past Contests</h3>
 		<table class=\"table hovered\">
@@ -44,10 +46,10 @@
 					<th class=\"text-left\">End</th>
 				</tr>
 			</thead>";
-			if ($res->rowCount() > 0) {
+			if (count($contests) > 0) {
 				echo "
 			<tbody>";
-				foreach ($res as $row) {
+				foreach ($contests as $row) {
 					echo "
 				<tr>
 					<td><a href=\"" . FLD . "contest/?contest=$row[cid]\">$row[contestname]</td>

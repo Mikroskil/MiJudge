@@ -12,6 +12,8 @@
 			<h2 class=\"fg-green\">$_SESSION[result]</h2>";
 			unset($_SESSION['result']);
 		}
+		if (!isset($_GET['contest']))
+			$_GET['contest'] = 0;
 		echo "
 			<form action=\"" . FLD . "upload-submission.php\" method=\"post\" enctype=\"multipart/form-data\">
 			<fieldset>
@@ -21,7 +23,10 @@
 					<button class=\"btn-file\"></button>
 				</div>
 				<div class=\"input-control hidden\">
-					<input type=\"hidden\" name=\"probid\" value=\"$_GET[problem]\"/>
+					<input type=\"hidden\" name=\"problem\" value=\"$_GET[problem]\"/>
+				</div>
+				<div class=\"input-control hidden\">
+					<input type=\"hidden\" name=\"contest\" value=\"$_GET[contest]\"/>
 				</div>
 				<div class=\"input-control select\">
 					<select name=\"language\">

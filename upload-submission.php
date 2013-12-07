@@ -14,27 +14,32 @@
 			echo "Stored in: " . $_FILES["submission"]["tmp_name"] . "<br>";
 			//echo $_POST['language'];
 			*/
-			$probid = $_POST['probid'];
+			$probid = $_POST['problem'];
+			$cid = $_POST['contest'];
 			$fileName = $_FILES["submission"]["name"];
 			$tempName = $_FILES["submission"]["tmp_name"];
 			$connect = newConnection();
 			
-			$res = newQuery($connect, "SELECT * FROM `contest` where starttime <= now() and endtime >= now()");
-			if ($res->rowCount() == 0)
-				throwError("No Contest");
-			$row = $res->fetch();
-			$cid = $row['cid'];
+			if ($cid != 0) {
+				$res = newQuery($connect, "SELECT count(*) FROM `contest` where starttime <= now() and cid=:cid", array('cid' => $cid));
+				if ($res->fetchColumn() == 0)
+					throwError("This Contest Has Not Started");
+
+				$res = newQuery($connect, "SELECT count(*) FROM `contest` where endtime >= now() and cid=:cid", array('cid' => $cid));
+				if ($res->fetchColumn() == 0)
+					throwError("This Contest Has Finished");
+			}
 			
-			$res = newQuery($connect, "SELECT * FROM `team` where name=:username", array('username' => $_SESSION['username']));
-			if ($res->rowCount() == 0)
-				throwError("No Valid Team");
+			$res = newQuery($connect, "SELECT count(*) FROM `team` where name=:username", array('username' => $_SESSION['username']));
 			$row = $res->fetch();
+			if ($row == null)
+				throwError("Invalid Team");
 			$team = $row['login'];
 			
-			$res = newQuery($connect, "SELECT * FROM `language` where name = '" . $_POST['language'] . "'");
-			if ($res->rowCount() == 0)
-				throwError("No Valid Team");
+			$res = newQuery($connect, "SELECT count(*) FROM `language` where name = '" . $_POST['language'] . "'");
 			$row = $res->fetch();
+			if ($row == null)
+				throwError("Language Not Supported");
 			$langid = $row['langid'];
 			
 			try {

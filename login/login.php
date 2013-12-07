@@ -5,8 +5,8 @@
 		$connect = newConnection();
 		$res = newQuery($connect, 'select * from team where login=:user and authtoken=:pass', 
 						array('user' => $_POST['username'], 'pass' => md5($_POST['username'].'#'.$_POST['password'])));
-		if ($res->rowCount() > 0) {
-			$row = $res->fetch();
+		$row = $res->fetch();
+		if ($row != null) {
 			$_SESSION['username'] = $row['login'];
 			if (isset($_SESSION['lastpage']))
 				header('location:' . $_SESSION['lastpage']);

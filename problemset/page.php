@@ -3,8 +3,8 @@
 		include_once('problem.php');
 	} else {
 		$connect = newConnection();
-		$res = $connect->prepare("select * from problem");
-		$res->execute();
+		$res = newQuery($connect, "select * from problem");
+		$problems = $res->fetchAll();
 		echo "
 	<div class=\"span8\">
 		<h3>All Problems</h3>
@@ -15,10 +15,10 @@
 					<th class=\"text-left\">Name</th>
 				</tr>
 			</thead>";
-			if ($res->rowCount() > 0) {
+			if (count($problems) > 0) {
 				echo "
 			<tbody>";
-				foreach ($res as $row) {
+				foreach ($problems as $row) {
 					echo "
 				<tr>
 					<td class=\"text-center\"><a href=\"?problem=$row[probid]\">$row[probid]</a></td>

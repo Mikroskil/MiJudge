@@ -1,6 +1,13 @@
 <?php
 	echo "
-<div class='span8'>
+<div class='span8'>";
+	if (isset($_SESSION['result'])) {
+		echo "
+		<h2 class=\"" . ($_SESSION['success'] ? "fg-green" : "fg-red") . "\">$_SESSION[result]</h2>";
+		unset($_SESSION['result']);
+		unset($_SESSION['success']);
+	}
+	echo "
 	<form method='post'>
 		<fieldset>
 			<legend>Register</legend>

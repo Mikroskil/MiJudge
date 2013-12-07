@@ -25,14 +25,13 @@ function newQuery($connection, $query, $array = NULL)
 function throwError($err)
 {
 	$_SESSION['error'] = $err;
-	header("Location: /error.php");
+	header("Location: " . FLD . "error.php");
 }
 
 function dbconfig_get($conf)
 {
 	$con = newConnection();
-	$res = $connect->prepare("select * from configuration where name='" . $conf . "'");
-	$res->execute();
+	$res = newQuery($connect, "select * from configuration where name=:conf", array('conf' => $conf));
 	$row = $res->fetch();
 	return $row['value'];
 }
@@ -61,10 +60,15 @@ function addFooter()
 	</body>";
 }
 
-function openHTML($title)
+function openHTML($title = null)
 {
-	if ($_SERVER['REQUEST_URI'] != "/login/" && $_SERVER['REQUEST_URI'] != "/login/index.php")
+	if ($_SERVER['REQUEST_URI'] != "/login/" && $_SERVER['REQUEST_URI'] != "/login/index.php" && 
+		$_SERVER['REQUEST_URI'] != "/register/" && $_SERVER['REQUEST_URI'] != "/register/index.php")
 		$_SESSION['lastpage'] = $_SERVER['REQUEST_URI'];
+	if ($title == null)
+		$title = "Mikroskil Online Judge";
+	else
+		$title = "Mikroskil Online Judge | " . $title;
 	echo "<!DOCTYPE html>
 <html lang=\"en\">
 <html>

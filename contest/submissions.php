@@ -5,6 +5,7 @@
 					LEFT JOIN judging  j ON (s.submitid = j.submitid AND j.valid=1)
 					where s.cid=:cid and s.teamid=:username", array('cid' => $_GET['contest'], 'username' => $_SESSION['username']));
 	}
+	$submission = $res->fetchAll();
 	echo "
 		<table class=\"table hovered\">
 			<thead>
@@ -17,10 +18,10 @@
 					<th class=\"text-left\">Result</th>
 				</tr>
 			</thead>";
-	if ($res->rowCount() > 0) {
+	if (count($submission) > 0) {
 		echo "
 			<tbody>";
-		foreach ($res as $row) {
+		foreach ($submission as $row) {
 			echo "
 				<tr>
 					<td class=\"text-center\">$row[submitid]</td>
