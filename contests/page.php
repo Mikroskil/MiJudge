@@ -13,8 +13,8 @@
 			<thead>
 				<tr>
 					<th class=\"text-left\">Name</th>
-					<th class=\"text-left\">Start</th>
-					<th class=\"text-left\">End</th>
+					<th class=\"text-center\">Start</th>
+					<th class=\"text-center\">End</th>
 				</tr>
 			</thead>";
 			if (count($contests) > 0) {
@@ -42,8 +42,8 @@
 			<thead>
 				<tr>
 					<th class=\"text-left\">Name</th>
-					<th class=\"text-left\">Start</th>
-					<th class=\"text-left\">End</th>
+					<th class=\"text-center\">Start</th>
+					<th class=\"text-center\">End</th>
 				</tr>
 			</thead>";
 			if (count($contests) > 0) {
