@@ -33,7 +33,27 @@ function genScoreBoard($connect)
 	$arrayTeamLogin = array();
 	$arrayProblemId = array();
 	
-	$scoredata = newQuery($connect, "SELECT * FROM scoreboard_jury WHERE cid = :cid", array('cid' => $cid));
+	$scoredata = newQuery($connect, "select ct.cid, a.login as teamid, a.name, b.probid, 
+		(case when d.minCorrect is null then (case when c.teamid is null then 0 else c.totalSubmission end) else d.minCorrect end) as submissions, 
+		0 as pending,
+		(case when d.timeCorrect is null then 0 else (case when ct.starttime < d.timeCorrect then TIMESTAMPDIFF(MINUTE, ct.starttime, d.timeCorrect) else 0 end) end) as totaltime, 
+		(case when d.timeCorrect is null then false else true end) is_correct from team a
+		inner join problem b on b.cid=:cid
+		inner join contest ct on b.cid=ct.cid
+		left join (
+			select teamid, probid, count(*) as totalSubmission from submission group by teamid, probid
+		) c on a.login=c.teamid and b.probid=c.probid
+		left join (
+			select a.teamid, a.probid, MAX(submittime) timeCorrect, count(*) as minCorrect from submission a
+			inner join (
+				select a.submitid, a.teamid, a.probid, b.result
+				from submission a
+				inner join judging b on a.submitid=b.submitid
+				where result='correct'
+				group by teamid, probid
+			) b on a.submitid <=b.submitid and a.teamid=b.teamid and a.probid=b.probid
+			group by teamid, probid
+		) d on a.login=d.teamid and b.probid=d.probid", array('cid' => $cid));
 	
 	foreach ($teams as $login => $team ) {
 		$SCORES[$team['login']]['num_correct'] = 0;
@@ -190,7 +210,7 @@ function renderScoreBoardTable($sdata)
 		foreach( $probs as $prob => $value) {
 			$bg = "";
 			if( $matrix[$team][$value['probid']]['is_correct'] )
-				$bg = " bg-green";
+				$bg = " bg-lightGreen";
 			else if ( $matrix[$team][$value['probid']]['num_submissions'] > 0 )
 				$bg = " bg-red";
 			echo "
@@ -307,3 +327,26 @@ function cmp($a, $b) {
 	}
 	return 0;
 }
+
+/*
+select ct.cid, a.login, a.name, b.probid, 
+(case when d.minCorrect is null then (case when c.teamid is null then 0 else c.totalSubmission end) else d.minCorrect end) as submissions, 
+(case when d.timeCorrect is null then 0 else (case when ct.starttime < d.timeCorrect then TIMESTAMPDIFF(MINUTE, ct.starttime, d.timeCorrect) else 0 end) end) as penaltytime, 
+(case when d.timeCorrect is null then false else true end) isAccepted from team a
+inner join problem b on b.cid=3
+inner join contest ct on b.cid=ct.cid
+left join (
+	select teamid, probid, count(*) as totalSubmission from submission group by teamid, probid
+) c on a.login=c.teamid and b.probid=c.probid
+left join (
+	select a.teamid, a.probid, MAX(submittime) timeCorrect, count(*) as minCorrect from submission a
+	inner join (
+		select a.submitid, a.teamid, a.probid, b.result
+		from submission a
+		inner join judging b on a.submitid=b.submitid
+		where result='correct'
+		group by teamid, probid
+	) b on a.submitid <=b.submitid and a.teamid=b.teamid and a.probid=b.probid
+	group by teamid, probid
+) d on a.login=d.teamid and b.probid=d.probid
+*/
