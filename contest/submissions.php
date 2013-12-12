@@ -1,6 +1,7 @@
 <?php
 	if (isLogin()) {
-		$res = newQuery($connect, "select s.submitid, t.name, s.probid, s.langid, s.submittime, j.result FROM submission s
+		$res = newQuery($connect, "select s.submitid, t.name, s.probid, s.langid, s.submittime, 
+					(case when j.result is null then 'Pending' else j.result end) as result FROM submission s
 					LEFT JOIN team     t ON (t.login    = s.teamid)
 					LEFT JOIN judging  j ON (s.submitid = j.submitid AND j.valid=1)
 					where s.cid=:cid and s.teamid=:username", array('cid' => $_GET['contest'], 'username' => $_SESSION['username']));

@@ -30,13 +30,13 @@
 					throwError("This Contest Has Finished");
 			}
 			
-			$res = newQuery($connect, "SELECT count(*) FROM `team` where name=:username", array('username' => $_SESSION['username']));
+			$res = newQuery($connect, "SELECT * FROM `team` where name=:username", array('username' => $_SESSION['username']));
 			$row = $res->fetch();
 			if ($row == null)
 				throwError("Invalid Team");
 			$team = $row['login'];
 			
-			$res = newQuery($connect, "SELECT count(*) FROM `language` where name = '" . $_POST['language'] . "'");
+			$res = newQuery($connect, "SELECT * FROM `language` where name = '" . $_POST['language'] . "'");
 			$row = $res->fetch();
 			if ($row == null)
 				throwError("Language Not Supported");

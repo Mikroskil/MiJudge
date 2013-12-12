@@ -3,7 +3,8 @@
 	<div class=\"span4\">";
 	echo "
 	Here should be news / profile";
-	if (isset($_SESSION['username']) && isset($_GET['problem'])) {
+	if (isset($_SESSION['username']) && isset($_GET['problem']) && isset($_SESSION['hasProblem'])) {
+		unset($_SESSION['hasProblem']);
 		$_SESSION['probid'] = $_GET['problem'];
 		echo "
 		<div class=\"row\">";

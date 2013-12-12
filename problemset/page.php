@@ -3,7 +3,7 @@
 		include_once('problem.php');
 	} else {
 		$connect = newConnection();
-		$res = newQuery($connect, "select * from problem");
+		$res = newQuery($connect, "select * from problem where cid not in (select cid from contest where starttime > now())");
 		$problems = $res->fetchAll();
 		echo "
 	<div class=\"span8\">
@@ -30,7 +30,6 @@
 			}
 			echo "
 		</table>
-	</div>
-";
+	</div>";
 	}
 ?>

@@ -3,8 +3,10 @@
 		if (!isset($_GET['menu']))
 			$_GET['menu'] = "problem";
 		$connect = newConnection();
-		$res = newQuery($connect, "select * from contest where cid=:id", array('id' => $_GET['contest']));
+		$res = newQuery($connect, "select * from contest where cid=:id and starttime<=now()", array('id' => $_GET['contest']));
 		$row = $res->fetch();
+		if ($row == null)
+			header("Location:" . FLD);
 		echo "
 	<div class=\"span8\">
 		<nav class=\"horizontal-menu\">

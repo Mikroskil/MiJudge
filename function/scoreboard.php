@@ -41,7 +41,8 @@ function genScoreBoard($connect)
 		inner join problem b on b.cid=:cid
 		inner join contest ct on b.cid=ct.cid
 		left join (
-			select teamid, probid, count(*) as totalSubmission from submission group by teamid, probid
+			select teamid, probid, count(*) as totalSubmission from submission a
+			inner join judging b on a.submitid=b.submitid and b.valid=1 where a.cid=:cid1 and b.result is not null group by teamid, probid
 		) c on a.login=c.teamid and b.probid=c.probid
 		left join (
 			select a.teamid, a.probid, MAX(submittime) timeCorrect, count(*) as minCorrect from submission a
@@ -52,8 +53,9 @@ function genScoreBoard($connect)
 				where result='correct'
 				group by teamid, probid
 			) b on a.submitid <=b.submitid and a.teamid=b.teamid and a.probid=b.probid
+			where cid=:cid2
 			group by teamid, probid
-		) d on a.login=d.teamid and b.probid=d.probid", array('cid' => $cid));
+		) d on a.login=d.teamid and b.probid=d.probid", array('cid' => $cid, 'cid1' => $cid, 'cid2' => $cid));
 	
 	foreach ($teams as $login => $team ) {
 		$SCORES[$team['login']]['num_correct'] = 0;

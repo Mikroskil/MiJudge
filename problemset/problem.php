@@ -1,8 +1,10 @@
 <?php
 	$connect = newConnection();
-	$res = newQuery($connect, "select * from problem where probid=:id", (array('id' => $_GET['problem'])));
+	$res = newQuery($connect, "select * from problem where probid=:id and cid not in (select cid from contest where starttime > now())",
+					(array('id' => $_GET['problem'])));
 	$problem = $res->fetch();
 	if ($problem != null) {
+		$_SESSION['hasProblem'] = true;
 		if ($problem['problemtext_type'] == "html") {
 			echo "
 	<div class=\"span8\">
