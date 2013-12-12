@@ -45,7 +45,7 @@
                     if ($(content).is(":hidden")) {
                         $(content).slideDown();
                         $(this).removeClass("collapsed");
-                        that._trigger("frame", event, {frame: frame});
+                        that._trigger("frame", e, {frame: frame});
                         that.options.open(frame);
                     } else {
                         $(content).slideUp();
@@ -71,3 +71,7 @@
 $(function(){
     $('[data-role=accordion]').accordion();
 });
+
+function reinitAccordions(){
+    $('[data-role=accordion]').accordion();
+}

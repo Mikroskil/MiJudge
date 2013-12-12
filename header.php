@@ -4,7 +4,6 @@
 			<div class=\"navigation-bar-content container\">
 				<a href=\"" . FLD . "\" class=\"element\">Mikroskil Online Judge</a>
 				<span class=\"element-divider\"></span>
-				<a href=\"" . FLD . "\" class=\"element\">Home</a>
 				<a href=\"" . FLD . "problemset\" class=\"element\">Problem Set</a>
 				<a href=\"" . FLD . "contests\" class=\"element\">Contests</a>
 				<a href=\"" . FLD . "rankings\" class=\"element\">Ranking</a>";
@@ -19,17 +18,6 @@
 	echo "
 			</div>
 		</div>";
-		/*
-		echo"
-		<div class=\"navigation-bar dark\">
-			<div class=\"navigation-bar-content container\">
-				<div>$_SERVER[SERVER_NAME]</div>
-				<div>$_SERVER[REQUEST_URI]</div>
-				<div>" . __DIR__ . "</div>
-				<div>" . dirname(__FILE__) . "</div>
-			</div>
-		</div>";
-		*/
 		echo "
 	</header>";
 ?>

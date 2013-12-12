@@ -8,6 +8,10 @@
 		$row = $res->fetch();
 		if ($row != null) {
 			$_SESSION['username'] = $row['login'];
+			if ($row['categoryid'] == 5)
+				$_SESSION['isAdmin'] = true;
+			else
+				$_SESSION['isAdmin'] = false;
 			if (isset($_SESSION['lastpage']))
 				header('location:' . $_SESSION['lastpage']);
 			else
