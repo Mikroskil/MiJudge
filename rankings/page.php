@@ -14,7 +14,7 @@
 					order by total desc, persentase desc");
 	$rank = $res->fetchAll();
 	echo "
-	<div class='span8'>
+	<div class=\"span8\">
 		<h3>Rank List </h3>
 		<table class=\"table bordered hovered\">
 			<thead>
@@ -25,26 +25,27 @@
 					<th class=\"text-center\">Ratio</th>
 				</tr>
 			</thead>";
-			if (count($rank) > 0) {
-				echo "
+	if (count($rank) > 0) {
+		echo "
 			<tbody>";
-				$i = 1;
-				foreach ($rank as $row) {
-					echo "
+		$i = 1;
+		foreach ($rank as $row) {
+			echo "
 				<tr>
 					<td class=\"text-center\">$i</td>
 					<td>$row[teamid]</td>
 					<th class=\"text-center\">$row[total] / $row[totalsubmit]</th>
 					<th class=\"text-center\">";
-					printf("%.2lf", $row['persentase']);
-					echo " %</th>
+			printf("%.2lf", $row['persentase']);
+			echo " %</th>
 				</tr>";
-					$i++;
-				}
-				echo "
+			$i++;
+		}
+		echo "
 			</tbody>";
-			}
-			echo "
+	}
+	unset($rank);
+	echo "
 		</table>
 	</div>";
 ?>

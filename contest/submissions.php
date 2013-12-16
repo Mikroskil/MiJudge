@@ -1,14 +1,23 @@
 <?php
 	if (isLogin()) {
+		if (isAdmin) {
+			$filter = "";
+			$farray = array('cid' => $_GET['contest']);
+		} else {
+			$filder = "and s.teamid=:username";
+			$farray = array('cid' => $_GET['contest'], 'username' => $_SESSION['username']);
+		}
 		$res = newQuery($connect, "select s.submitid, t.name, s.probid, s.langid, s.submittime, 
 					(case when j.result is null then 'Pending' else j.result end) as result FROM submission s
 					LEFT JOIN team     t ON (t.login    = s.teamid)
 					LEFT JOIN judging  j ON (s.submitid = j.submitid AND j.valid=1)
-					where s.cid=:cid and s.teamid=:username", array('cid' => $_GET['contest'], 'username' => $_SESSION['username']));
+					where s.cid=:cid $filter", $farray);
+	} else {
+		return;
 	}
 	$submission = $res->fetchAll();
 	echo "
-		<table class=\"table hovered\">
+		<table class=\"table bordered hovered\">
 			<thead>
 				<tr>
 					<th class=\"text-center\">#</th>
@@ -27,7 +36,7 @@
 				<tr>
 					<td class=\"text-center\">$row[submitid]</td>
 					<td>$row[name]</td>
-					<td>$row[probid]</td>
+					<td><a href=\"?contest=$_GET[contest]&problem=$row[probid]\">$row[probid]</a></td>
 					<td>$row[langid]</td>
 					<td>$row[submittime]</td>
 					<td>$row[result]</td>
@@ -36,6 +45,7 @@
 		echo "
 			</tbody>";
 	}
+	unset($submission);
 	echo "
 		</table>";
 ?>

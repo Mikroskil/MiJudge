@@ -2,7 +2,7 @@
 	$res = newQuery($connect, "select * from contest a inner join problem b on a.cid=b.cid where a.cid=:id", array('id' => $_GET['contest']));
 	$problem = $res->fetchAll();
 	echo "
-		<table class=\"table hovered\">
+		<table class=\"table bordered hovered\">
 			<thead>
 				<tr>
 					<th class=\"text-center\">#</th>
@@ -22,6 +22,7 @@
 		echo "
 			</tbody>";
 	}
+	unset($problem);
 	echo "
 		</table>";
 ?>

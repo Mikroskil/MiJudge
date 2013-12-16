@@ -1,31 +1,12 @@
 <?php
 	echo "
 	<div class=\"span4\">";
-	if (isset($_SESSION['isAdmin'])) {
-		if ($_SESSION['isAdmin']) {
+	if (isAdmin) {
 			echo "
 			<nav class=\"sidebar\">
 				<ul>
 					<li class=\"title\">Admin Menu</li>
-					<li class=\"stick bg-yellow\">
-						<a class=\"dropdown-toggle\" href=\"#\"><i class=\"icon-tree-view\"></i>Sub menu</a>
-						<ul class=\"dropdown-menu\">
-							<li><a href=\"\">Subitem 1</a></li>
-							<li><a href=\"\">Subitem 2</a></li>
-							<li><a href=\"\">Subitem 3</a></li>
-							<li class=\"divider\"></li>
-							<li><a href=\"\">Subitem 4</a></li>
-							<li class=\"disabled\"><a href=\"\">Subitem 4</a></li>
-						</ul>
-					</li>
-					<li>
-						<a class=\"dropdown-toggle\" href=\"#\">Sub menu 2</a>
-						<ul class=\"dropdown-menu\">
-							<li><a href=\"\">Subitem 1</a></li>
-							<li><a href=\"\">Subitem 2</a></li>
-							<li><a href=\"\">Subitem 3</a></li>
-						</ul>
-					</li>
+					<li><a href=\"\">Manage Contests</a></li>
 					<li>
 						<a class=\"dropdown-toggle\" href=\"#\">Manage Problems</a>
 						<ul class=\"dropdown-menu\">
@@ -34,10 +15,8 @@
 							<li><a href=\"\">Subitem 3</a></li>
 						</ul>
 					</li>
-					<li><a href=\"\">Manage Contests</a></li>
 				</ul>
 			</nav>";
-		}
 	}
 	echo "
 	<div>Here should be news / profile</div>";

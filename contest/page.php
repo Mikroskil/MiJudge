@@ -3,7 +3,11 @@
 		if (!isset($_GET['menu']))
 			$_GET['menu'] = "problem";
 		$connect = newConnection();
-		$res = newQuery($connect, "select * from contest where cid=:id and starttime<=now()", array('id' => $_GET['contest']));
+		if (isAdmin)
+			$filter = "";
+		else
+			$filter = "and starttime<=now()";
+		$res = newQuery($connect, "select * from contest where cid=:id $filter", array('id' => $_GET['contest']));
 		$row = $res->fetch();
 		if ($row == null)
 			header("Location:" . FLD);
