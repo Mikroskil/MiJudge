@@ -34,7 +34,7 @@
 
 function placeContest($title, $table)
 {
-		echo "
+	echo "
 		<h3>$title</h3>
 		<table class=\"table bordered hovered\">
 			<thead>
@@ -42,36 +42,36 @@ function placeContest($title, $table)
 					<th class=\"text-left\">Name</th>
 					<th class=\"text-center\">Start</th>
 					<th class=\"text-center\">End</th>";
-		if (isAdmin) {
-				echo "
-					<th class=\"text-center\"></th>";
-			}
+	if (isAdmin) {
 		echo "
+					<th class=\"text-center\"></th>";
+	}
+	echo "
 				</tr>
 			</thead>";
-			if (count($table) > 0) {
-				echo "
+	if (count($table) > 0) {
+		echo "
 			<tbody>";
-				foreach ($table as $row) {
-					echo "
+		foreach ($table as $row) {
+			echo "
 				<tr>
 					<td><a href=\"" . FLD . "contest/?contest=$row[cid]\">$row[contestname]</td>
 					<td class=\"text-center\">$row[starttime]</td>
 					<td class=\"text-center\">$row[endtime]</td>";
-					if (isAdmin) {
-						echo "
+			if (isAdmin) {
+				echo "
 					<td class=\"text-center\">
 						<a href=\"?contest=$row[cid]&mode=edit\" title=\"Edit Contest\"><span class=\"icon-pencil\"></span></a>&nbsp;
 						<a href=\"?contest=$row[cid]&mode=delete\" title=\"Delete Contest\" onclick=\"return AreYouSure();\"><span class=\"icon-cancel\"></span></a>
 					</th>";
-					}
-					echo "
-				</tr>";
-				}
-			echo "
-			</tbody>";
 			}
 			echo "
+				</tr>";
+		}
+		echo "
+			</tbody>";
+	}
+	echo "
 		</table>";
 }
 ?>

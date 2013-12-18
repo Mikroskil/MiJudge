@@ -28,7 +28,7 @@
 	<div class=\"span8\">
 		<form method=\"post\">
 			<fieldset>
-				<legend>Login</legend>
+				<legend>Edit Contest</legend>
 				<input type=\"hidden\" value=\"$cid\" placeholder=\"\" name=\"contestid\"/>
 				<div>
 				<input type=\"text\" value=\"$row[contestname]\" placeholder=\"Contest Name\" title=\"Contest Name\" name=\"contestname\" data-transform=\"input-control\"/>
