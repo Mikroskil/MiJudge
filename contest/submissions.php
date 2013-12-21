@@ -1,10 +1,10 @@
 <?php
 	if (isLogin()) {
 		if (isAdmin) {
-			$filter = "";
+			$filter = "order by s.submitid";
 			$farray = array('cid' => $_GET['contest']);
 		} else {
-			$filder = "and s.teamid=:username";
+			$filter = "and s.teamid=:username";
 			$farray = array('cid' => $_GET['contest'], 'username' => $_SESSION['username']);
 		}
 		$res = newQuery($connect, "select s.submitid, t.name, s.probid, s.langid, s.submittime, 

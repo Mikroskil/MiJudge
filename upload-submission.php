@@ -30,7 +30,7 @@
 					throwError("This Contest Has Finished");
 			}
 			
-			$res = newQuery($connect, "SELECT * FROM `team` where name=:username", array('username' => $_SESSION['username']));
+			$res = newQuery($connect, "SELECT * FROM `team` where login=:username", array('username' => $_SESSION['username']));
 			$row = $res->fetch();
 			if ($row == null)
 				throwError("Invalid Team");
