@@ -1,20 +1,34 @@
 <?php
 	$connect = newConnection();
-	$que = newQuery($connect, "SELECT teamid, sum(case when b.result='correct' then 1 else 0 end) as accepted
+	$que = newQuery($connect, "SELECT teamid
+							, sum(case when b.result='correct' then 1 else 0 end) as accepted
 							, sum(case when b.result='wrong-answer' then 1 else 0 end) as wrong_answer
-							, sum(case when b.result='compile-error' then 1 else 0 end) as compile_error
+							, sum(case when b.result='compiler-error' then 1 else 0 end) as compile_error
 							, sum(case when b.result='runtime-error' then 1 else 0 end) as runtime_error
-							, sum(case when b.result='time-limit' then 1 else 0 end) as time_limit
+							, sum(case when b.result='time-limit-error' then 1 else 0 end) as time_limit
 							, count(*) as totalsubmit FROM submission a
 							inner join judging b on a.submitid=b.submitid
 							where teamid='$_SESSION[username]'");
 	$res = $que->fetchAll();
+	
+	//pake mysql biasa, pas pake PDO Error trus, ud stress wkwk
+	$conn = mysql_connect(DB_Server,DB_Login,DB_Password) or die ("SERVER DOWN");
+	$db   = mysql_select_db(DB_Name, $conn) or die ("DATABASE TIDAK ADA");
+	$que2 = mysql_query("SELECT distinct a.probid FROM submission a
+						inner join judging b on a.submitid=b.submitid
+						where b.result='correct' and a.teamid='$_SESSION[username]'");
+	$solved = mysql_num_rows($que2);
+	$que3 = mysql_query("SELECT name from team where login='$_SESSION[username]'");
+	$fullname = mysql_fetch_array($que3)[0];
+	if($res[0]['totalsubmit']==0){
+		$res[0]['accepted']=$res[0]['wrong_answer']=$res[0]['compile_error']=$res[0]['runtime_error']=$res[0]['time_limit']=0;
+	}
 	echo "
 	<div class=\"span8\">
 		<table class=\"table\">
 			<thead>
 				<tr>
-					<th class=\"text-left\"><h1>$_SESSION[username]</h1></th>
+					<th class=\"text-left\"><h1>$_SESSION[username]<br>($fullname)</h1></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,7 +36,7 @@
 					<td class=\"text-left\"><img src='../images/default_profile.png'></img></td>
 				</tr>
 				<tr>
-					<td class=\"text-left\"><h2>Problems Solved: ".$res[0]['accepted']."<br> <!--belum tahu cara ambil berapa solved-->
+					<td class=\"text-left\"><h2>Problems Solved: ".$solved."<br> <!--belum tahu cara ambil berapa solved-->
 											Total Submissions: ".$res[0]['totalsubmit']."<br>
 											Accepted: ".$res[0]['accepted']."<br>
 											Wrong Answer: ".$res[0]['wrong_answer']."<br>
