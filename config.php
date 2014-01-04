@@ -35,24 +35,22 @@
 	define( 'DB_Name', 'domjudge' );
 	//*/
 	//*
-	define( "UPLOAD_DIR", "\\\\192.168.159.129\\submissions\\");
 	define( 'DB_Server', '192.168.159.129' );
 	define( 'DB_Login', 'domjudge' );
 	define( 'DB_Password', 'qMksax88TlqJiMuF' );
 	define( 'DB_Name', 'domjudge' );
 	//*/
 	/*
-	define( "UPLOAD_DIR", "\\\\192.168.174.129\\submissions\\");
 	define( 'DB_Server', '192.168.174.128' );
 	define( 'DB_Login', 'domjudge' );
 	define( 'DB_Password', 'qMksax88TlqJiMuF' );
 	define( 'DB_Name', 'domjudge' );
 	//*/
 	/*
-	define( "UPLOAD_DIR", "\\\\192.168.73.129\\submissions\\");
 	define( 'DB_Server', '192.168.73.129' );
 	define( 'DB_Login', 'domjudge' );
 	define( 'DB_Password', 'qMksax88TlqJiMuF' );
 	define( 'DB_Name', 'domjudge' );
 	//*/
+	define( "UPLOAD_DIR", "\\\\" . DB_Server . "\\submissions\\");
 ?>

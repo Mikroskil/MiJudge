@@ -21,8 +21,8 @@
 				<tr>
 					<th class=\"text-center\">#</th>
 					<th class=\"text-left\">Name</th>
-					<th class=\"text-center\">Solved/Submissions</th>
-					<th class=\"text-center\">Ratio</th>
+					<th class=\"text-center\">Total Solved / Total Submissions</th>
+					<th class=\"text-center\">Accepted</th>
 				</tr>
 			</thead>";
 	if (count($rank) > 0) {

@@ -34,7 +34,7 @@
 		echo "
 				</tr>
 			</thead>";
-		$res = newQuery($connect, "select * from problem where cid not in (select cid from contest where starttime > now())");
+		$res = newQuery($connect, "select * from problem where cid not in (select cid from contest where endtime > now())");
 		$problems = $res->fetchAll();
 		if (count($problems) > 0) {
 			echo "
