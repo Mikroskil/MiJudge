@@ -19,11 +19,11 @@
 		
 		$que2 = newQuery($connect, "select count(*) from (SELECT distinct a.probid FROM submission a
 							inner join judging b on a.submitid=b.submitid
-							where b.result='correct' and a.teamid=:user)", array('user' => $user));
-		$solved = $que2->fetch();
+							where b.result='correct' and a.teamid=:user) a", array('user' => $user));
+		$solved = $que2->fetchColumn();
 		
 		$que3 = newQuery($connect, "SELECT name from team where login=:user" , array('user' => $user));
-		$fullname = $que3->fetch();
+		$fullname = $que3->fetchColumn();
 		
 		/*
 		//pake mysql biasa, pas pake PDO Error trus, ud stress wkwk
