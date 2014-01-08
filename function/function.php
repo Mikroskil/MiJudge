@@ -134,6 +134,11 @@ function isLogin()
 	return isset($_SESSION['username']);
 }
 
+function goHome()
+{
+	header("Location: " . FLD);
+}
+
 function getFileContents($filename)
 {
 	if (!file_exists($filename) ) {

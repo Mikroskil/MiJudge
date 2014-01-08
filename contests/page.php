@@ -1,6 +1,8 @@
 <?php
 	if (isset($_GET['mode'])) {
-		if ($_GET['mode'] == "edit") {
+		if ($_GET['mode'] == "add") {
+			include_once('manage-contest.php');
+		} else if ($_GET['mode'] == "edit") {
 			include_once('edit-contest.php');
 		} else {
 			include_once('delete-contest.php');

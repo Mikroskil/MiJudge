@@ -1,5 +1,4 @@
 <?php
-	include_once('../config.php');
 	if (isAdmin) {
 		$connect = newConnection();
 		if (isset($_POST['contestid'])) {

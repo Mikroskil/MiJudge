@@ -6,15 +6,8 @@
 			<nav class=\"sidebar\">
 				<ul>
 					<li class=\"title\">Admin Menu</li>
-					<li><a href=\"\">Manage Contests</a></li>
-					<li>
-						<a class=\"dropdown-toggle\" href=\"#\">Manage Problems</a>
-						<ul class=\"dropdown-menu\">
-							<li><a href=\"\">Subitem 1</a></li>
-							<li><a href=\"\">Subitem 2</a></li>
-							<li><a href=\"\">Subitem 3</a></li>
-						</ul>
-					</li>
+					<li><a href=\"" . FLD . "contests\?mode=add\">Manage Contests</a></li>
+					<li><a href=\"#\">Manage Problems</a></li>
 				</ul>
 			</nav>";
 	}
